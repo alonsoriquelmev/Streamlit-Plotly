@@ -14,9 +14,13 @@ st.sidebar.header("Options")
 
 year_select = st.sidebar.selectbox('Select year', var.list_years)
 
-fab_select = st.sidebar.multiselect('Select producer', var.list_prod, var.list_prod)
-
 origin_select = st.sidebar.multiselect('Select origin', var.list_origin, var.list_origin)
+
+list_prod_main = var.list_prod
+if len(origin_select) == 1:
+    list_prod_main = data_cars[data_cars['Origin'] == origin_select[0]].Fabricante.unique()
+
+fab_select = st.sidebar.multiselect('Select producer', list_prod_main, list_prod_main)
 
 if str(year_select) != 'None':
     data_filtered = data_cars[data_cars['YearModel'] == int(year_select)]
