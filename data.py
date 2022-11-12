@@ -2,13 +2,6 @@ import pandas as pd
 
 data_cars = pd.read_csv('Cars.csv', sep=';')
 
-new_data_cars = pd.DataFrame()
-
-# for index, row in data_cars.iterrows():
-#         data_aux = row
-#         data_aux['MPG'] = str(data_aux['MPG'])
-#         new_data_cars = pd.concat([new_data_cars,data_aux], ignore_index=True)
-# data_cars['MPG'] = data_cars['MPG'].astype('|S80')
 data_cars['MPG'] = data_cars['MPG'].str.replace(',','.').astype(float)
 data_cars['Displacement'] = data_cars['Displacement'].str.replace(',','.')
 data_cars['Displacement'] = data_cars['Displacement'].str.replace('.0','')
@@ -27,5 +20,3 @@ data_cars['YearModel'] = data_cars['Model'].apply(lambda x: 1900+x)
 
 
 
-origin = data_cars.Origin.value_counts()
-origin_quant = pd.DataFrame(origin)
