@@ -18,5 +18,14 @@ for index, row in data_cars.iterrows():
 
 data_cars['YearModel'] = data_cars['Model'].apply(lambda x: 1900+x)
 
+data_aux_sum = data_cars[['Origin','YearModel']]
 
+data_sum = pd.DataFrame(columns=['Origin','Year','Count'])
+
+for origin_type in data_cars.Origin.unique():
+        for year in data_cars.YearModel.unique():
+                data_aux = data_aux_sum[(data_aux_sum['Origin'] == origin_type) & (data_aux_sum['YearModel'] == year)]
+                count = data_aux.shape[0]
+                data_join = pd.DataFrame({'Origin': [origin_type],'Year': [year], 'Count':[count]})
+                data_sum = pd.concat([data_sum,data_join], ignore_index = True)
 
