@@ -77,7 +77,7 @@ with column1:
             st.markdown("### Boxplot of MPG of "+str(fab_select[0])+" Cars")
             color_boxplot = var.prod_colors[fab_select[0]]
             fig = px.box(data_filtered, x= 'Fabricante', y = 'MPG', color='Origin', color_discrete_sequence=[color_boxplot])
-            fig.update_traces(quartilemethod = "exclusive")
+             
             st.plotly_chart(fig, use_container_width=True)
 
         else:
@@ -87,11 +87,11 @@ with column1:
                 if str(boxplot_select) == 'Yes':
                     
                     fig = px.violin(data_cars, x= 'Origin', y = 'MPG', color='Origin', box = True,color_discrete_sequence=['#F58523','#B428D0','#2898D0'])
-                    fig.update_traces(quartilemethod = "exclusive")
+                     
                     st.plotly_chart(fig, use_container_width=True)
                 elif str(boxplot_select) == 'No':
                     fig = px.violin(data_cars, x= 'Origin', y = 'MPG', color='Origin', box = False, points = 'all',color_discrete_sequence=['#F58523','#B428D0','#2898D0'])
-                    fig.update_traces(quartilemethod = "exclusive")
+                     
                     st.plotly_chart(fig, use_container_width=True)
 with column2:
     with st.container():
@@ -99,7 +99,7 @@ with column2:
             st.markdown("### Boxplot of Horsepower of "+str(fab_select[0])+" Cars")
             color_boxplot = var.prod_colors[fab_select[0]]
             fig = px.box(data_filtered, x = 'Origin', y = 'Horsepower',color='Origin', color_discrete_sequence=[color_boxplot].reverse())
-            fig.update_traces(quartilemethod = "exclusive")
+             
             st.plotly_chart(fig, use_container_width=True)
         else:
             with st.container():
@@ -107,9 +107,9 @@ with column2:
                 boxplot_select = st.radio("Add box plot to violin chart?", ('Yes','No'), key = 'selectradio2')
                 if str(boxplot_select) == 'Yes':
                     fig = px.violin(data_cars, x = 'Origin', y = 'Horsepower',color='Origin', box = True,color_discrete_sequence=['#F58523','#B428D0','#2898D0'])
-                    fig.update_traces(quartilemethod = "exclusive")
+                     
                     st.plotly_chart(fig, use_container_width=True)
                 elif str(boxplot_select) == 'No':
                     fig = px.violin(data_cars, x = 'Origin', y = 'Horsepower',color='Origin', box = False, points = 'all', color_discrete_sequence=['#F58523','#B428D0','#2898D0'])
-                    fig.update_traces(quartilemethod = "exclusive")
+                     
                     st.plotly_chart(fig, use_container_width=True)
